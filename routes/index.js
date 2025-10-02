@@ -1,9 +1,21 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+
+//// Sra masin kasem 
+
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     description: Welcome to swagger-jsdoc!
+ *     responses:
+ *       200:
+ *         description: Returns a mysterious string.
+ */
+
+router.get('/', (req, res) => {
+  res.send('Hello World!');
 });
 
 module.exports = router;
