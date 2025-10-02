@@ -1,5 +1,6 @@
-const {version, description, license} = require('../package.json')
+const { version, description, license } = require('../package.json')
 const swaggerUi = require('swagger-ui-express')
+const swaggerJsdoc = require('swagger-jsdoc')
 
 // Swagger ի Կոնֆիգուրացիաները:
 
@@ -24,24 +25,27 @@ const swaggerUi = require('swagger-ui-express')
 // Այնտեղ պետք է ունենաս Swagger-ի հատուկ կոմենտներ (@openapi կամ @swagger)։
 
 const options = {
-    definition : {
-        openapi : '3.0.0',
-        info : {
+    definition: {
+        openapi: '3.0.1',
+        info: {
             version: '1.0.0',
-            title : 'First User Swagger DOCs',
+            title: 'First User Swagger DOCs',
             description: 'This is a simple CRUD API appliaction made with Express and Documented with Swagger',
         },
-        servers : [
+        servers: [
             {
-                url : 'http://localhost:3000',
+                url: 'http://localhost:3000',
             }
         ]
     },
-    apis : ['./routes/*.js']
+    apis: ['./routes/*.js']
 }
 
+
+
+
 // Այս Ֆունկցիան կանչվում է app.js - ում
-function setupSwagger(app){
+function setupSwagger(app) {
     //1.
     // app.use('/api-docs', ...)
     // Ասում է Express-ին, որ երբ user-ը գնա http://localhost:3000/api-docs հասցեով, պետք է բացվի Swagger UI-ն։
@@ -53,7 +57,9 @@ function setupSwagger(app){
     //3.
     // Սա կոնֆիգուրացիան է։ Այստեղ փոխանցում ենք մեր options օբյեկտը, որը դու արդեն վերևում սահմանել էիր։
     // Այս setup-ը Swagger UI-ին ասում է, թե որ API-ի մասին ինֆո պետք է ցույց տա։
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(options))
+    // swaggerJsdoc - Ֆունկցիայա որին տալսիենք Options Object-ը
+
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJsdoc(options)))
 }
 
 module.exports = setupSwagger
