@@ -1,3 +1,7 @@
+// https://swagger.io/docs/specification/v3_0/data-models/data-types/
+
+
+
 // GET
 // /** ... */ — Սա JSDoc/Swagger մեկնաբանության բլոկն է։ Այս տողի ներսում գրած բաները swagger-jsdoc/արևպանկաները կարդում են և տալիս են OpenAPI կոնֆիգուրացիա։
 // @swagger — ցույց է տալիս, որ այս բլոկը OpenAPI/Swagger բնութագիր է։
